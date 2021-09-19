@@ -36,13 +36,13 @@ print 'ENTER 1st NUMBER REAL VALUE [A_REAL]: '
         
 mov ah,01h   ;getting 1st char input
 int 21h
-sub al,30h   ;converting ascii to integer
+sub al,48d   ;converting ascii to integer
 lea bx,a_real    ;putting address of a_real in b
 mov b. [bx],al  ;modifying value of a_real 
 
 mov ah,01h
 int 21h
-sub al,30h    ;repeating the above step and getting the number
+sub al,48d    ;repeating the above step and getting the number
 mov cl,al
 mov ax,a_real ;putting a_real value in ax so that finally can get the 8 bit number
 mov ch,10d    ;putting 10h in ch so that we can do the 2 digit number multiplication
@@ -57,13 +57,13 @@ print 'ENTER 1st NUMBER IMAGINARY VALUE [A_IMAG]: '
 
 mov ah,01h   ;getting 1st char input
 int 21h
-sub al,30h   ;converting ascii to integer
+sub al,48d   ;converting ascii to integer
 lea bx,a_imag    ;putting address of a_imag in b
 mov b. [bx],al  ;modifying value of a_imag 
 
 mov ah,01h
 int 21h
-sub al,30h    ;repeating the above step and getting the number
+sub al,48d    ;repeating the above step and getting the number
 mov cl,al
 mov ax,a_imag ;putting a_real value in ax so that finally can get the 8 bit number
 mov ch,10d    ;putting 10h in ch so that we can do the 2 digit number multiplication
@@ -79,13 +79,13 @@ print 'ENTER 2nd NUMBER REAL VALUE [B_REAL]: '
         
 mov ah,01h   ;getting 1st char input
 int 21h
-sub al,30h   ;converting ascii to integer
+sub al,48d   ;converting ascii to integer
 lea bx,b_real    ;putting address of a_real in b
 mov b. [bx],al  ;modifying value of a_real 
 
 mov ah,01h
 int 21h
-sub al,30h    ;repeating the above step and getting the number
+sub al,48d    ;repeating the above step and getting the number
 mov cl,al
 mov ax,b_real ;putting a_real value in ax so that finally can get the 8 bit number
 mov ch,10d    ;putting 10h in ch so that we can do the 2 digit number multiplication
@@ -100,13 +100,13 @@ print 'ENTER 2nd NUMBER IMAGINARY VALUE [B_IMAG]: '
 
 mov ah,01h   ;getting 1st char input
 int 21h
-sub al,30h   ;converting ascii to integer
+sub al,48d   ;converting ascii to integer
 lea bx,b_imag    ;putting address of a_imag in b
 mov b. [bx],al  ;modifying value of a_imag 
 
 mov ah,01h
 int 21h
-sub al,30h    ;repeating the above step and getting the number
+sub al,48d    ;repeating the above step and getting the number
 mov cl,al
 mov ax,b_imag ;putting a_real value in ax so that finally can get the 8 bit number
 mov ch,10d    ;putting 10h in ch so that we can do the 2 digit number multiplication
@@ -172,7 +172,7 @@ je subtraction:
 
 ;IF INPUT==3 do multiplaction
 cmp al,03h
-je multiplication:
+je multiplaction:
     multiplication:
         ;TYPE THE MULTIPLICATION CODE HERE    
 
@@ -192,3 +192,7 @@ je divison:
 
 
 ret
+
+
+
+
