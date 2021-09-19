@@ -180,7 +180,53 @@ je subtraction:
 cmp al,03h
 je multiplication:
     multiplication:
-        ;TYPE THE MULTIPLICATION CODE HERE    
+        ;a+ib c+id multiplication=(ac-bd)+i(ad+bc)
+ 
+        ;real part
+        MOV AX,a_imag
+        MOV BX,b_imag
+        IMUL BX
+        PUSH AX
+        MOV AX,a_real
+        MOV BX,b_real
+        IMUL BX
+        PUSH AX
+
+        POP BX
+        POP CX
+        SUB BX,CX
+        PUSH BX
+
+       ;imaginary part
+       MOV AX,a_real
+       MOV BX,b_imag
+       IMUL BX
+       PUSH AX
+       MOV AX,a_imag 
+       MOV BX,b_real
+       IMUL BX
+       PUSH AX
+       POP BX
+       POP CX
+       ADD BX,CX
+       PUSH BX
+
+       POP BX
+       MOV b,BX
+       POP AX
+       MOV a,AX
+
+       printn  ;print new line
+
+       ;printing complex values after multiplication
+       PRINT 'Your result after complex multiplication: '
+       MOV AX,a
+       CALL PRINT_NUM
+       PRINT '+i'
+       PRINT '('
+       MOV AX,b
+       CALL PRINT_NUM
+       PRINT ')'    
 
 
 
@@ -213,12 +259,12 @@ je divison:
     add bx,ax   
     
 ;    
-       
-    
-        
-
-
-
-
-
 ret
+
+DEFINE_PRINT_NUM
+DEFINE_PRINT_STRING
+DEFINE_PRINT_NUM_UNS
+
+END
+
+
